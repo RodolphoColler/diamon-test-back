@@ -12,14 +12,14 @@ model User {
   name            String             @unique
   phone           String         
   gender          String
-  birthDay        DateTime
+  birthDate       DateTime
   married         Boolean
   comments        String
-  departament     Departament        @relation(fields: [departamentId], references: [id])
-  departamentId   Int
+  department      Department        @relation(fields: [departmentId], references: [id])
+  departmentId    Int
 }
 
-model Departament {
+model Department {
   id              Int                @id @default(autoincrement())
   name            String             @unique
   User            User[]
