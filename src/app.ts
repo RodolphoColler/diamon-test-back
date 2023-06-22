@@ -10,10 +10,8 @@ const app = express();
 
 app.use(express.json());
 
-console.log(typeof String(process.env.CORS));
-
 const corsConfig = {
-  origin: [String(process.env.CORS), "http://localhost:3000"],
+  origin: ["https://diamond-test-front.vercel.app", "http://localhost:3000"],
   credentials: true,
 };
 
