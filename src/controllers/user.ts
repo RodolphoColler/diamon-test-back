@@ -13,15 +13,12 @@ export async function read(_req: Request, res: Response, _next: NextFunction) {
 
 export async function create(req: Request, res: Response, _next: NextFunction) {
   try {
-    console.log('aa');
-
     const { name, phone, gender, birthDate, married, departmentId, comments } = req.body
 
     const user = await model.create({ name, phone, gender, birthDate, married, departmentId, comments });
 
     return res.status(200).json({ user });
   } catch (error) {
-    console.log(error)
     return res.status(500).json({ message: 'Inside server error.' });
   }
 }
