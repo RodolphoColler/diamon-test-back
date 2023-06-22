@@ -18,7 +18,9 @@ export async function create({ name, phone, gender, birthDate, married, departme
 }
 
 export async function read() {
-  const users = await prisma.user.findMany();
+  const users = await prisma.user.findMany({
+    include: { department: true },
+  });
 
   return users;
 }
