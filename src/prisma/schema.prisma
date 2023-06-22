@@ -9,8 +9,8 @@ generator client {
 
 model User {
   id              Int                @id @default(autoincrement())
-  name            String             @unique
-  phone           String         
+  name            String             @db.VarChar(30)
+  phone           String             @db.VarChar(30)
   gender          String
   birthDate       DateTime
   married         Boolean
@@ -21,6 +21,6 @@ model User {
 
 model Department {
   id              Int                @id @default(autoincrement())
-  name            String             @unique
+  name            String             @unique @db.VarChar(30)
   User            User[]
 }
