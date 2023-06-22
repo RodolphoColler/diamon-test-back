@@ -10,8 +10,10 @@ const app = express();
 
 app.use(express.json());
 
+console.log(typeof String(process.env.CORS));
+
 const corsConfig = {
-  origin: [String(process.env.CORS)],
+  origin: ["mysql://root:ZD9JXY7ZnhaJxkDjhJvr@containers-us-west-25.railway.app:5703/railway", "http://localhost:5173"],
   credentials: true,
 };
 
