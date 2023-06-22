@@ -13,7 +13,7 @@ app.use(express.json());
 console.log(typeof String(process.env.CORS));
 
 const corsConfig = {
-  origin: ["mysql://root:ZD9JXY7ZnhaJxkDjhJvr@containers-us-west-25.railway.app:5703/railway", "http://localhost:5173"],
+  origin: [String(process.env.CORS), "http://localhost:3000"],
   credentials: true,
 };
 
