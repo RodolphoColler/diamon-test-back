@@ -1,26 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model User {
-  id              Int                @id @default(autoincrement())
-  name            String             @db.VarChar(30)
-  phone           String             @db.VarChar(30)
-  gender          String
-  birthDate       DateTime
-  married         Boolean
-  comments        String
-  department      Department        @relation(fields: [departmentId], references: [id])
-  departmentId    Int
+  id           Int        @id @default(autoincrement())
+  name         String     @db.VarChar(30)
+  phone        String     @db.VarChar(30)
+  gender       String
+  married      Boolean
+  comments     String
+  departmentId Int
+  birthDate    DateTime
+  department   Department @relation(fields: [departmentId], references: [id])
+
+  @@index([departmentId], map: "User_departmentId_fkey")
 }
 
 model Department {
-  id              Int                @id @default(autoincrement())
-  name            String             @unique @db.VarChar(30)
-  User            User[]
+  id   Int    @id @default(autoincrement())
+  name String @unique @db.VarChar(30)
+  User User[]
 }
